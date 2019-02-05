@@ -1,9 +1,13 @@
 
-// window.localStorage.setItem('iks', 0);
+ // window.localStorage.setItem('iks', 0);
 
 function ale() {
-    var x = parseInt(window.localStorage.getItem('iks'));
+    // var x = parseInt(window.localStorage.getItem('iks'));
+    var x = window.localStorage.getItem('iks');
+    // x++
+    x = x*1  + 1;
+    // window.localStorage.setItem('iks', x);
+    window.localStorage.iks = x;
+
     alert(x);
-    x = x  + 1;
-    window.localStorage.setItem('iks', x);
 }
