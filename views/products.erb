@@ -1,0 +1,19 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <% @pr.each do |p| %>
+      <div class="col-md-6">
+        <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12 img-responsive"><img  class="img-responsive" src="<%= p.path_to_image %>" /></div>
+        </div>
+        <div class="row">
+          <div class="col-md-9  bg-success">Pizza <%= p.title %></div><div class="col-md-3 col-sm-3 col-xs-3 bg-info"><%= p.price %>  р.</div>
+        </div>
+      </div>
+      </div>
+<!--      <div class="col-md-1"><%#= p.title %></div>-->
+    <% end %>
+
+  </div>
+</div>

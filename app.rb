@@ -17,3 +17,13 @@ end
 get '/about' do
   erb :about
 end
+
+get '/products' do
+
+  @pr = Product.all
+  erb :products
+end
+
+get '/bootstr' do
+  erb :bootstr
+end
