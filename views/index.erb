@@ -1,5 +1,39 @@
 <h2>Wellcome to PizzaShop</h2>
 
+<div class="container-fluid">
+
+  <div class="row">
+    <% @pr.each do |p| %>
+      <div class="col-md-4 col-xs-6">
+
+        <div class="bg-success">
+          Pizza <%= p.title %>
+        </div>
+        <div class="bg-info">
+          <%= p.price %>  р.
+        </div>
+
+        <div>
+          <img  class="img-responsive"  src="<%= p.path_to_image %>" />
+        </div>
+
+        <div class="bg-success">
+          <%= p.description %>
+        </div>
+
+        <div class="bg-success">
+          Size: <%= p.size %> cm.
+        </div>
+
+
+      </div>
+    <% end %>
+
+  </div>
+</div>
+<br/>
+
+
 <button class="btn btn-primary btn-lg" onclick="ale()">Click me</button>
 
 

@@ -11,6 +11,7 @@ class Product < ActiveRecord::Base
 end
 
 get '/' do
+  @pr = Product.all
 	erb :index
 end
 
