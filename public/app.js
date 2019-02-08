@@ -18,6 +18,10 @@ function add_to_cart(id) {
     var x = window.localStorage.getItem(key);
     x++;
     window.localStorage.setItem(key, x);
+}
+
+function total_of_order() 
+{
 
     var a = {};
 
@@ -25,11 +29,10 @@ function add_to_cart(id) {
 
     for (var i=0; i<localStorage.length; i++) {
         var key = window.localStorage.key(i);
-        // a.push([key, localStorage[key]]);
         a[key] = window.localStorage.getItem(key);
-        total += a[key]*1
+        if (key.indexOf('product_') == 0) {
+            total += a[key] * 1;
+        }
     }
-
-    // alert(total);
-
+    return total;
 }
