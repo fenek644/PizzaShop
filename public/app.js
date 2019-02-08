@@ -13,5 +13,9 @@ function ale() {
 }
 
 function add_to_cart(id) {
-    alert('You added pizza with id ' + id);
+
+    var key = 'product_' + id
+    var x = window.localStorage.getItem(key);
+    x++;
+    window.localStorage.setItem(key, x);
 }
