@@ -19,6 +19,13 @@ function add_to_cart(id) {
     x++;
     window.localStorage.setItem(key, x);
     update_input();
+    update_order_button()
+}
+
+function update_order_button() {
+
+    var text = "Cart (" + total_of_order() + ")";
+    $('#orders_button').val(text);
 }
 
 function update_input() {
