@@ -1,3 +1,7 @@
 .idea/*
 
 pizzashop.db
+views/products.erb
+views/bootstr.erb
+views/bufer.erb
+views/bufer.erb

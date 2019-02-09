@@ -18,13 +18,17 @@ function add_to_cart(id) {
     var x = window.localStorage.getItem(key);
     x++;
     window.localStorage.setItem(key, x);
+    update_input();
+}
+
+function update_input() {
+    var orders = write_query();
+    $("#orders_input").val(orders);
 }
 
 function total_of_order() 
 {
-
     var a = {};
-
     var total = 0;
 
     for (var i=0; i<localStorage.length; i++) {
@@ -35,4 +39,18 @@ function total_of_order()
         }
     }
     return total;
+}
+
+function write_query(){
+    var str = '';
+
+
+    for (var i=0; i<localStorage.length; i++) {
+        var key = window.localStorage.key(i);
+        var val = window.localStorage.getItem(key);
+        if (key.indexOf("product_") == 0) {
+            str += key + "=" + val + ",";
+        }
+    }
+    return str;
 }

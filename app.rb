@@ -19,12 +19,16 @@ get '/about' do
   erb :about
 end
 
-get '/products' do
+get '/bufer' do
 
   @pr = Product.all
-  erb :products
+  erb :bufer
 end
 
 get '/bootstr' do
   erb :bootstr
+end
+
+post '/cart' do
+  erb "Hello World"
 end

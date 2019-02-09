@@ -33,13 +33,36 @@
 			  <div class="navbar-collapse collapse">
 			    <ul class="nav navbar-nav">
 			      <li><a href="/about">About</a></li>
-			      <li><a href="/products">Products</a></li>
+			      <li><a href="/bufer">Bufer</a></li>
 			      <li ><a href="/bootstr">Bootstr</a></liclass>
 			    </ul>
 
-					<ul class="nav navbar-nav navbar-right">
-			      <li ><a href="/cart">Cart</a></liclass>
-			    </ul>
+<!--					<form class="navbar-form navbar-right">-->
+<!--						<div class="form-group">-->
+<!--							<form action="/cart" method="POST">-->
+<!--							  <input type="text" class="form-control" placeholder="Search">-->
+<!--								<input type="submit" class="btn btn-primary " value="cart (...)"/ >-->
+<!--								<button type="submit" class="btn btn-primary ">Cart (...)</button>-->
+<!--							</form>-->
+<!--						</div>-->
+<!--					</form>-->
+
+<!--					<ul class="nav navbar-nav navbar-right">-->
+<!--						<li >-->
+<!--							<form action="/cart" method="POST">-->
+<!--							<input type="submit" class="btn btn-primary btn-lg" value="cart (...)"/ >-->
+<!--							</form>-->
+<!--							</liclass>-->
+<!--			    </ul>-->
+
+					<div class="form-group">
+						<form action="/cart" method="POST" class="navbar-form navbar-right">
+							<input id="orders_input" name="order" type=text" class="form-control" placeholder="Write your order">
+<!--							<input type="submit" class="btn btn-primary" value="cart (...)"/ >-->
+							<button type="submit" class="btn btn-primary" onclick="write_query()">Cart (...)</button>
+						</form>
+					</div>
+
 			  </div><!--/.nav-collapse -->
 
 			</nav>
