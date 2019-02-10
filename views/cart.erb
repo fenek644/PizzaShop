@@ -1,0 +1,13 @@
+<h2> <%= @str %></h2>
+
+<% @arr.each do |item| %>
+  <h3><%= item %></h3>
+<% end %>
+
+<% @quan.each do |item| %>
+  <h4><%= item %></h4>
+<% end %>
+
+<% @hh.each do |key, val| %>
+  <h4>Pizza <%= key %> &nbsp;&nbsp; <%= val %></h4>
+<% end %>

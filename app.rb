@@ -30,5 +30,16 @@ get '/bootstr' do
 end
 
 post '/cart' do
-  erb "Hello World"
+  # @n = params[:]
+  @str = params[:order]
+  @arr = @str.split ','
+  @quan = @arr.map { |s| s.split('_')[1]  }
+  @hh = {}
+  @quan.each do |item|
+
+    key = Product.find(item.split("=")[0]).title
+    @hh[key] = item.split("=")[1]
+
+  end
+  erb :cart
 end
