@@ -1,13 +1,61 @@
-<h2> <%= @str %></h2>
 
-<% @arr.each do |item| %>
-  <h3><%= item %></h3>
+<% str = @root.cart %>
+<!--<h2> <%#= str %></h2>-->
+
+<% arr = str.split ',' %>
+<%# arr.each do |item| %>
+<!--  <h3><%#= item %></h3>-->
+<%# end %>
+
+<% quan = arr.map { |s| s.split('_')[1]  } %>
+<%# quan.each do |item| %>
+<!--  <h4><%#= item %></h4>-->
+<%# end %>
+
+<% hh = {} %>
+<% pr = 0 %>
+<% quan.each do |item| %>
+
+  <%  key = Product.find(item.split("=")[0]).title %>
+  <% pr += Product.find(item.split("=")[0]).price*item.split("=")[1].to_i %>
+  <% hh[key] = item.split("=")[1] %>
+
 <% end %>
 
-<% @quan.each do |item| %>
-  <h4><%= item %></h4>
-<% end %>
-
-<% @hh.each do |key, val| %>
+<% hh.each do |key, val| %>
   <h4>Pizza <%= key %> &nbsp;&nbsp; <%= val %></h4>
 <% end %>
+
+<% ord = "" %>
+<% hh.each do |key, value| %>
+  <% ord += "Pizza " + key + ": " + value + ";  " %>
+<% end %>
+
+<h2><%= ord %></h2>
+<h2><%= pr %></h2>
+
+
+<form action="/order" method="POST">
+  <div class="form-group">
+    <input name="order[cart]" type="hidden" class="form-control"  value="<%= ord %>" >
+  </div>
+  <div class="form-group">
+    <input name="order[price]" type="hidden" class="form-control"  value="<%= pr %>" >
+  </div>
+  <div class="form-group">
+    <label>Ваше имя</label>
+    <input name="order[name]" type="text" class="form-control"  placeholder="Введите имя" value="<%= @ord_full.name %>">
+  </div>
+  <div class="form-group">
+    <label>Ваш телефон</label>
+    <input name="order[phone]" type="text" class="form-control"  placeholder="Введите телефон" value="<%= @ord_full.phone %>">
+  </div>
+  <div class="form-group">
+    <label >Введите адрес, пожалуйста</label>
+    <!--   <input id="datetimepicker" type="text" >-->
+   <input name="order[address]" type="text" class="form-control"  placeholder="Введите адрес" value="<%= @ord_full.address %>">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Оформить заказ</button><br>
+
+</form>

@@ -40,7 +40,7 @@
 
 					<div class="form-group">
 						<form action="/cart" method="POST" class="navbar-form navbar-right">
-							<input id="orders_input" name="order" type="hidden" class="form-control" placeholder="Write your order">
+							<input id="orders_input" name="cart" type="hidden" class="form-control" value="<%= @str %>">
 							<input id="orders_button" type="submit" class="btn btn-primary" / >
 <!--							<button type="submit" class="btn btn-primary" onclick="write_query()">Cart (...)</button>-->
 						</form>
