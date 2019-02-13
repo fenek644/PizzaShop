@@ -49,7 +49,6 @@ get '/cart' do
 end
 
 post '/cart' do
-  # @n = params[:]
   @root = Root.new
   @root.cart = params[:cart]
   @root.save
@@ -58,19 +57,23 @@ post '/cart' do
   erb :cart
 end
 
+get '/order' do
+  @ord_full = Order.new
+  @root = Root.last
+  erb :order
+end
+
+
 post '/order' do
-
-
 
   @root = Root.last
 
   @ord_full = Order.new params[:order]
 
   if @ord_full.save
-    erb "Спасибо за заказ, в ближайшее время вам ответят"
+    erb :order
   else
     @error = @ord_full.errors.full_messages.first
      erb :cart
   end
-
 end
