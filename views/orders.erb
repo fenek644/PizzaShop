@@ -1,0 +1,14 @@
+
+<h2>Список заказов на текущий момент</h2>
+
+<table  class="table table-striped">
+  <tr><th>#</th><th>Заказ</th><th>Цена</th><th>Заказчик</th><th>Время заказа</th></tr>
+  <% ind = 0 %>
+  <% @ords.each do |ord| %>
+    <% ind += 1 %>
+    <tr>
+      <td><%= ind %></td><td> <%= ord.cart %> &nbsp;&nbsp;</td><td> <%= ord.price %></td><td><%= ord.name %></td><td><%= ord.created_at %></td>
+    </tr>
+  <% end %>
+
+</table>

@@ -63,6 +63,12 @@ get '/order' do
   erb :order
 end
 
+get '/orders' do
+  @ords = Order.all.order(created_at: :desc)
+
+  erb :orders
+end
+
 
 post '/order' do
 
