@@ -72,14 +72,14 @@ end
 
 post '/order' do
 
-  @root = Root.last
+    @root = Root.last
 
-  @ord_full = Order.new params[:order]
+    @ord_full = Order.new params[:order]
 
-  if @ord_full.save
-    erb :order
-  else
-    @error = @ord_full.errors.full_messages.first
-     erb :cart
-  end
+    if @ord_full.save
+      erb :order
+    else
+      @error = @ord_full.errors.full_messages.first
+      erb :cart
+    end
 end
