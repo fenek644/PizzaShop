@@ -2,16 +2,13 @@
 <div class="row">
   <div class="col-md-4"><h2></h2></div>
   <div class="col-md-8"><h2>Ваш заказ</h2></div>
-<!--  <div class="col-md-4"><h2></h2></div>-->
 </div>
 
 <% str = @root.cart %>
-<!--<h2> <%#= str %></h2>-->
+
 
 <% arr = str.split ',' %>
-<%# arr.each do |item| %>
-<!--  <h3><%#= item %></h3>-->
-<%# end %>
+
 
 <% quan = arr.map { |s| s.split('_')[1]  } %>
 
@@ -28,57 +25,58 @@
 
 <% end %>
 
-<table  class="table table-striped">
-  <tr><th>#</th><th>Продукт</th><th>Количество</th><th>Цена за одну<th></tr>
-   <% ind = 0 %>
-  <% hh.each do |key, val| %>
-    <% ind += 1 %>
-    <tr>
-      <td><%= ind %></td><td>Pizza <%= key %> &nbsp;&nbsp;</td><td> <%= val %></td><td><%= hp[key] %></td>
-    </tr>
+<div id="cart">
+
+  <table  class="table table-striped">
+    <tr><th>#</th><th>Продукт</th><th>Количество</th><th>Цена за одну<th></tr>
+     <% ind = 0 %>
+    <% hh.each do |key, val| %>
+      <% ind += 1 %>
+      <tr>
+        <td><%= ind %></td><td>Pizza <%= key %> &nbsp;&nbsp;</td><td> <%= val %></td><td><%= hp[key] %></td>
+      </tr>
+    <% end %>
+
+  </table>
+
+
+  <% ord = "" %>
+  <% hh.each do |key, value| %>
+    <% ord += "Pizza " + key + ": " + value + ";  " %>
   <% end %>
 
-</table>
+  <div class="row">
+    <div class="col-md-2"><h2></h2></div>
+    <div class="col-md-6"><h2>Итого с вас</h2></div>
+    <div class="col-md-4"><h2><%= pr %></h2></div>
+  </div>
 
 
-<% ord = "" %>
-<% hh.each do |key, value| %>
-  <% ord += "Pizza " + key + ": " + value + ";  " %>
-<% end %>
 
-<div class="row">
-  <div class="col-md-2"><h2></h2></div>
-  <div class="col-md-6"><h2>Итого с вас</h2></div>
-  <div class="col-md-4"><h2><%= pr %></h2></div>
+  <form action="/order" method="POST">
+    <div class="form-group">
+      <input name="order[cart]" type="hidden" class="form-control"  value="<%= ord %>" >
+    </div>
+    <div class="form-group">
+      <input name="order[price]" type="hidden" class="form-control"  value="<%= pr %>" >
+    </div>
+    <div class="form-group">
+      <label>Ваше имя</label>
+      <input name="order[name]" type="text" class="form-control"  placeholder="Введите имя" value="<%= @ord_full.name %>">
+    </div>
+    <div class="form-group">
+      <label>Ваш телефон</label>
+      <input name="order[phone]" type="text" class="form-control"  placeholder="Введите телефон" value="<%= @ord_full.phone %>">
+    </div>
+    <div class="form-group">
+      <label >Введите адрес, пожалуйста</label>
+     <input name="order[address]" type="text" class="form-control"  placeholder="Введите адрес" value="<%= @ord_full.address %>">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Оформить заказ</button><!--br-->
+    <button class="btn btn-danger" onclick="return cancel_cart()">Очистить корзину</button><br>
+
+  </form>
+
 </div>
-
-<!--<h2><%#= ord %></h2>-->
-<!--<h2><%#= pr %></h2>-->
-
-
-<form action="/order" method="POST">
-  <div class="form-group">
-    <input name="order[cart]" type="hidden" class="form-control"  value="<%= ord %>" >
-  </div>
-  <div class="form-group">
-    <input name="order[price]" type="hidden" class="form-control"  value="<%= pr %>" >
-  </div>
-  <div class="form-group">
-    <label>Ваше имя</label>
-    <input name="order[name]" type="text" class="form-control"  placeholder="Введите имя" value="<%= @ord_full.name %>">
-  </div>
-  <div class="form-group">
-    <label>Ваш телефон</label>
-    <input name="order[phone]" type="text" class="form-control"  placeholder="Введите телефон" value="<%= @ord_full.phone %>">
-  </div>
-  <div class="form-group">
-    <label >Введите адрес, пожалуйста</label>
-    <!--   <input id="datetimepicker" type="text" >-->
-   <input name="order[address]" type="text" class="form-control"  placeholder="Введите адрес" value="<%= @ord_full.address %>">
-  </div>
-
-  <button type="submit" class="btn btn-primary">Оформить заказ</button><!--br-->
-  <button class="btn btn-danger" onclick="cancel_cart();return false">Очистить корзину</button><br>
-
-</form>
 
