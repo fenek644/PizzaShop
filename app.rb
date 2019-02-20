@@ -52,6 +52,9 @@ post '/cart' do
   @root = Root.new
   @root.cart = params[:cart]
   @root.save
+  if params[:cart].length == 0
+    return erb :cart_is_empty
+  end
 
   @ord_full = Order.new
   erb :cart
