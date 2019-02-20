@@ -61,3 +61,11 @@ function write_query(){
     }
     return str;
 }
+
+function cancel_cart(){
+    localStorage.clear();
+    update_input();
+    update_order_button();
+
+    return false;
+}

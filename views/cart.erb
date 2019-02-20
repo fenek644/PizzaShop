@@ -77,6 +77,8 @@
    <input name="order[address]" type="text" class="form-control"  placeholder="Введите адрес" value="<%= @ord_full.address %>">
   </div>
 
-  <button type="submit" class="btn btn-primary">Оформить заказ</button><br>
+  <button type="submit" class="btn btn-primary">Оформить заказ</button><!--br-->
+  <button class="btn btn-danger" onclick="cancel_cart();return false">Очистить корзину</button><br>
 
 </form>
+
