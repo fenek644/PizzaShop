@@ -51,8 +51,9 @@ end
 post '/cart' do
   @root = Root.new
   @root.cart = params[:cart]
+  r = @root.cart
   @root.save
-  if params[:cart].length == 0
+  if r.length == 0
     return erb :cart_is_empty
   end
 
